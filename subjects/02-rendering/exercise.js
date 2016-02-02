@@ -17,9 +17,20 @@ import { render } from 'react-dom'
 import sortBy from 'sort-by'
 
 function Menu() {
+
+  const items = DATA.items
+  .filter ((item) => {
+    return item.type === 'mexican'
+  }).sort (sortBy('name')).map ((item) => {
+    return <li>{item.name}</li>
+  })
+
+// sortBy(sortOrder === 'ascending' ? 'name' : '-name')
+
   return (
     <div>
-      Open the console, you have failing tests
+      <h1>{DATA.title}</h1>
+      <ul>{items}</ul>
     </div>
   )
 }
@@ -32,7 +43,7 @@ const DATA = {
     { id: 3, name: 'tostada', type: 'mexican' },
     { id: 4, name: 'mushy peas', type: 'english' },
     { id: 5, name: 'fish and chips', type: 'english' },
-    { id: 6, name: 'black pudding', type: 'english' }
+    { id: 6, name: 'hush puppies', type: 'english' }
   ]
 }
 
